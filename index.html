@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tie Zheng</title>
+<meta name="description" content="Tie Zheng, Ph.D. Postdoctoral Researcher, Stanford University. Building electrification, exposure science, and air pollution.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root {
+    --bg: #ffffff;
+    --text: #494e52;
+    --heading: #2f3437;
+    --muted: #7a8288;
+    --border: #e6e8ea;
+    --link: #2f7f93;
+    --link-hover: #1f5866;
+    --accent: #8c1515; /* Stanford cardinal */
+    --chip: #f2f3f3;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1b1d1f; --text: #c9cdd1; --heading: #eef0f2; --muted: #8f979e;
+      --border: #33373b; --link: #6cc3d5; --link-hover: #9adbe8; --accent: #e06666; --chip: #26292c;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1b1d1f; --text: #c9cdd1; --heading: #eef0f2; --muted: #8f979e;
+    --border: #33373b; --link: #6cc3d5; --link-hover: #9adbe8; --accent: #e06666; --chip: #26292c;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: "Source Sans 3", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 17px; line-height: 1.6;
+  }
+  a { color: var(--link); text-decoration: none; }
+  a:hover { color: var(--link-hover); text-decoration: underline; }
+
+  /* ---------- Top navigation ---------- */
+  .masthead {
+    position: sticky; top: 0; z-index: 10; background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .masthead-inner {
+    max-width: 1180px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+  }
+  .site-title { font-weight: 700; color: var(--heading); font-size: 1.1rem; }
+  .site-title:hover { text-decoration: none; color: var(--accent); }
+  .nav { display: flex; gap: 18px; flex-wrap: wrap; margin-left: auto; font-size: .95rem; }
+  .nav a { color: var(--muted); }
+  .nav a:hover { color: var(--heading); text-decoration: none; }
+
+  /* ---------- Layout ---------- */
+  .layout {
+    max-width: 1180px; margin: 0 auto; padding: 32px 24px 48px;
+    display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 48px;
+  }
+
+  /* ---------- Sidebar ---------- */
+  .sidebar { position: sticky; top: 88px; align-self: start; }
+  .avatar {
+    width: 175px; height: 175px; border-radius: 50%; object-fit: cover;
+    border: 1px solid var(--border); display: block;
+  }
+  .avatar-placeholder {
+    display: flex; align-items: center; justify-content: center;
+    background: var(--chip); color: var(--muted); font-size: 3rem; font-weight: 700;
+  }
+  .sidebar h1 { font-size: 1.5rem; color: var(--heading); margin: 16px 0 2px; line-height: 1.25; }
+  .sidebar .role { margin: 0 0 14px; color: var(--muted); font-size: .95rem; line-height: 1.45; }
+  .sidebar ul { list-style: none; padding: 0; margin: 0; font-size: .93rem; }
+  .sidebar li { display: flex; align-items: baseline; gap: 10px; padding: 3px 0; }
+  .sidebar li i { width: 18px; text-align: center; color: var(--muted); flex: none; }
+  .sidebar li a, .sidebar li span { overflow-wrap: anywhere; }
+
+  /* ---------- Main content ---------- */
+  main section { margin-bottom: 40px; }
+  h2 {
+    font-size: 1.35rem; color: var(--heading); margin: 0 0 14px;
+    padding-bottom: 6px; border-bottom: 1px solid var(--border);
+  }
+  h3 { font-size: 1.02rem; color: var(--heading); margin: 22px 0 8px; }
+  p { margin: 0 0 12px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 4px; padding: 0; list-style: none; }
+  .tags li { background: var(--chip); border-radius: 999px; padding: 3px 12px; font-size: .88rem; }
+
+  .news { list-style: none; padding: 0; margin: 0; }
+  .news li { display: grid; grid-template-columns: 92px 1fr; gap: 12px; padding: 5px 0; }
+  .news time { color: var(--muted); font-size: .92rem; font-variant-numeric: tabular-nums; }
+
+  .entry { display: grid; grid-template-columns: 1fr auto; gap: 2px 16px; margin-bottom: 16px; }
+  .entry .org { font-weight: 600; color: var(--heading); }
+  .entry .when { color: var(--muted); font-size: .92rem; white-space: nowrap; }
+  .entry .detail { grid-column: 1 / -1; font-size: .95rem; }
+  .entry ul { margin: 4px 0 0; padding-left: 20px; }
+
+  .pubs { padding-left: 0; list-style: none; margin: 0; counter-reset: none; }
+  .pubs li { margin-bottom: 12px; font-size: .96rem; }
+  .pubs .me { font-weight: 700; color: var(--heading); }
+  .pubs .title { color: var(--heading); }
+  .pubs .venue { font-style: italic; }
+  .badge {
+    display: inline-block; font-size: .75rem; padding: 0 8px; border-radius: 4px;
+    border: 1px solid var(--accent); color: var(--accent); margin-left: 4px; vertical-align: 1px;
+  }
+  .note { color: var(--muted); font-size: .9rem; }
+
+  .plain { padding-left: 20px; margin: 0; }
+  .plain li { margin-bottom: 4px; }
+
+  .pb { display: flex; flex-wrap: wrap; gap: 12px; margin: 6px 0 14px; padding: 0; list-style: none; }
+  .pb li { border: 1px solid var(--border); border-radius: 8px; padding: 8px 14px; text-align: center; }
+  .pb strong { display: block; font-size: 1.15rem; color: var(--heading); font-variant-numeric: tabular-nums; }
+  .pb span { font-size: .82rem; color: var(--muted); }
+
+  .photos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0 16px; max-width: 560px; }
+  .photos figure { margin: 0; }
+  .photos img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 8px; display: block; }
+  .photos figcaption { font-size: .82rem; color: var(--muted); margin-top: 4px; }
+
+  footer { border-top: 1px solid var(--border); color: var(--muted); font-size: .85rem; }
+  footer div { max-width: 1180px; margin: 0 auto; padding: 18px 24px; }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 860px) {
+    .layout { grid-template-columns: 1fr; gap: 28px; padding: 20px 16px 40px; }
+    .masthead-inner { padding: 12px 16px; gap: 8px 16px; }
+    .nav { margin-left: 0; gap: 6px 14px; }
+    .sidebar { position: static; display: grid; grid-template-columns: 110px 1fr; gap: 0 18px; align-items: start; }
+    .avatar { width: 110px; height: 110px; grid-row: span 2; }
+    .avatar-placeholder { font-size: 2rem; }
+    .sidebar h1 { margin-top: 4px; }
+    .sidebar ul { grid-column: 1 / -1; margin-top: 12px; }
+    .news li { grid-template-columns: 1fr; gap: 0; }
+    .entry { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="site-title" href="#">Tie Zheng</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#news">News</a>
+      <a href="#publications">Publications</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#talks">Talks</a>
+      <a href="#service">Service</a>
+      <a href="#running">Running</a>
+      <a href="Zheng_Tie_CV.pdf">CV</a>
+    </nav>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="sidebar">
+    <img class="avatar" src="profile.jpg" alt="Tie Zheng">
+    <h1>Tie Zheng, Ph.D.</h1>
+    <p class="role">Postdoctoral Researcher<br>Department of Earth System Science<br>Stanford University</p>
+    <ul>
+      <li><i class="fa-solid fa-location-dot"></i><span>Stanford, CA</span></li>
+      <li><i class="fa-solid fa-envelope"></i><a href="mailto:tiezh@stanford.edu">tiezh@stanford.edu</a></li>
+      <li><i class="fa-solid fa-graduation-cap"></i><a href="https://scholar.google.com/citations?user=01Si3ocAAAAJ&amp;hl=en">Google Scholar</a></li>
+      <li><i class="fa-brands fa-linkedin"></i><a href="https://www.linkedin.com/in/tie-zheng-0b1986301/">LinkedIn</a></li>
+      <li><i class="fa-brands fa-researchgate"></i><a href="https://www.researchgate.net/profile/Tie-Zheng-4">ResearchGate</a></li>
+      <li><i class="fa-solid fa-file-lines"></i><a href="Zheng_Tie_CV.pdf">CV (PDF)</a></li>
+    </ul>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <main>
+
+    <section id="about">
+      <h2>About me</h2>
+      <p>I am a Postdoctoral Researcher in the <a href="https://earth.stanford.edu/esys">Department of Earth System Science</a> at Stanford University, working with Prof. <a href="https://jacksonlab.stanford.edu/">Rob Jackson</a>. I received my Ph.D. in Environmental Science and Engineering from Tsinghua University in 2025, advised by Prof. Ye Wu.</p>
+      <p>I combine multi-platform monitoring with data-driven models to quantify air pollution dynamics and human exposure in homes and cities. My goal is to inform building electrification strategies by evaluating their exposure and health benefits. At Stanford, I lead the Ultrafine Particle (UFP) project in the Electrification for Health program, measuring size-resolved UFP emissions from gas appliances in 60+ San Francisco Bay Area homes.</p>
+      <p>Outside research, I am a competitive distance runner and part-time coach. I placed 6th overall in the 2026 San Francisco Marathon.</p>
+      <ul class="tags" aria-label="Research interests">
+        <li>Building electrification &amp; health</li>
+        <li>Exposure science</li>
+        <li>Air pollution modeling &amp; measurement</li>
+        <li>Emission factors</li>
+        <li>Instrumentation &amp; field campaigns</li>
+      </ul>
+    </section>
+
+    <section id="news">
+      <h2>News</h2>
+      <ul class="news">
+        <li><time>2026</time><span>Serving as Guest Editor for the <em>Atmosphere</em> Special Issue “Air Pollution Monitoring, Traffic-Related Emissions, and Health Exposure Assessment” (submissions open through March 2027).</span></li>
+        <li><time>2026</time><span>Placed 6th overall at the San Francisco Marathon.</span></li>
+        <li><time>2026</time><span>Mentoring a student in the Stanford SURGE Program on mapping air-health inequity with AI and community-based sensing.</span></li>
+        <li><time>Aug 2025</time><span>Joined Stanford University as a Postdoctoral Researcher with Prof. Rob Jackson.</span></li>
+        <li><time>Jun 2025</time><span>Received my Ph.D. from Tsinghua University.</span></li>
+        <li><time>2025</time><span>Our paper on cost-effective mapping of hyperlocal air pollution was published in <em>ACS ES&amp;T Air</em> and featured as the journal cover.</span></li>
+      </ul>
+    </section>
+
+    <section id="publications">
+      <h2>Publications</h2>
+      <p class="note">* Corresponding author &nbsp;·&nbsp; # Equal contribution. Full list on <a href="https://scholar.google.com/citations?user=01Si3ocAAAAJ&amp;hl=en">Google Scholar</a>.</p>
+
+      <h3>Manuscripts in development or under review</h3>
+      <ul class="pubs">
+        <li><span class="me">Zheng, T.</span>, Derrick, S., Finnegan, C. J., Pongetti, J., Jourdain, C., Lebel, E. D., Kashtan, Y. S., Lucha, N., Huang, G., Michanowicz, D. R., Shonkoff, S. B. C., Boies, A. M., &amp; Jackson, R. B. (2026). <span class="title">Ultrafine particle emissions from burning gas in homes.</span> In development.</li>
+        <li><span class="me">Zheng, T.</span>, Wen, Y., Xiang, S., et al. (2026). <span class="title">A cost-effective framework for urban air pollution mapping.</span> Under review, <span class="venue">ACS ES&amp;T Air</span>.</li>
+        <li>Sumaiya P. K., <span class="me">Zheng, T.*</span>, Wen, Y., Xiang, S., et al. (2026). <span class="title">Multi-source domain adaptation for mobile-to-ambient air-pollution mapping.</span> In development.</li>
+      </ul>
+
+      <h3>Peer-reviewed journal articles</h3>
+      <ul class="pubs">
+        <li><span class="me">Zheng, T.</span>, Wen, Y., Xiang, S., Yang, P., Zheng, X., You, Y., Zhang, S., &amp; Wu, Y. (2025). <span class="title">Cost-effective mapping of hyperlocal air pollution using large-scale mobile monitoring and land-use machine learning.</span> <span class="venue">ACS ES&amp;T Air</span>, 2(2), 151–161. <span class="badge">Journal cover</span></li>
+        <li>Xiang, S., Yu, J., Yu, Y. T., et al., incl. <span class="me">Zheng, T.</span> (2025). <span class="title">Exploring the holiday effect on elevated traffic-related air pollution with hyperlocal measurements in Chengdu, China.</span> <span class="venue">Atmosphere</span>, 16(2), 171.</li>
+        <li><span class="me">Zheng, T.</span>, Xiang, S., Zhang, S., &amp; Wu, Y. (2023). <span class="title">Variability of traffic-related air pollutants at two- and four-phase intersections.</span> <span class="venue">Atmospheric Pollution Research</span>, 14(12), 101936.</li>
+        <li><span class="me">Zheng, T.</span>, Peng, Z. R., He, H. D., Zhang, S. J., &amp; Wu, Y. (2022). <span class="title">Horizontal profiles of size-segregated particle number concentration and black carbon beside a major roadway.</span> <span class="venue">Atmospheric Environment: X</span>, 16, 100187.</li>
+        <li><span class="me">Zheng, T.#</span>, Jia, Y. P.#, Zhang, S., Li, X. B., Wu, Y., Wu, C. L., He, H. D., &amp; Peng, Z. R. (2021). <span class="title">Impacts of vegetation on particle concentrations in roadside environments.</span> <span class="venue">Environmental Pollution</span>, 282, 117067.</li>
+        <li><span class="me">Zheng, T.</span>, Wang, H. W., Li, X. B., Peng, Z. R., &amp; He, H. D. (2021). <span class="title">Impacts of traffic on roadside particle variations in varied temporal scales.</span> <span class="venue">Atmospheric Environment</span>, 253, 118354.</li>
+        <li><span class="me">Zheng, T.</span>, Li, B., Li, X. B., Wang, Z., Li, S. Y., &amp; Peng, Z. R. (2021). <span class="title">Vertical and horizontal distributions of traffic-related pollutants beside an urban arterial road based on unmanned aerial vehicle observations.</span> <span class="venue">Building and Environment</span>, 187, 107401.</li>
+        <li>Jia, Y. P., Lu, K. F., <span class="me">Zheng, T.</span>, Li, X. B., Liu, X., Peng, Z. R., &amp; He, H. D. (2021). <span class="title">Effects of roadside green infrastructure on particle exposure: A focus on cyclists and pedestrians on pathways between urban roads and vegetative barriers.</span> <span class="venue">Atmospheric Pollution Research</span>, 12(3), 1–12.</li>
+        <li>Gao, Y., Wang, Z., Li, C., <span class="me">Zheng, T.</span>, &amp; Peng, Z. R. (2021). <span class="title">Assessing neighborhood variations in ozone and PM2.5 concentrations using decision tree method.</span> <span class="venue">Building and Environment</span>, 188, 107479.</li>
+        <li>Wang, J., Yin, J., Khan, R. U., Wang, S., &amp; <span class="me">Zheng, T.</span> (2021). <span class="title">A study of inbound logistics mode based on JIT production in cruise ship construction.</span> <span class="venue">Sustainability</span>, 13(3), 1588.</li>
+      </ul>
+
+      <h3>Book chapters</h3>
+      <ul class="pubs">
+        <li>Yu, Y. T., Zhang, S., Xiang, S., Yang, P., Wang, H., <span class="me">Zheng, T.</span>, &amp; Wu, Y. (2025). <span class="title">The role of ground-based mobile monitoring in air quality evaluation.</span> In J. R. Barker, A. L. Steiner, &amp; T. J. Wallington (Eds.), <span class="venue">Urban and Regional Air Quality: Emissions, Chemistry, and Impacts</span> (pp. 267–323). World Scientific.</li>
+        <li>Zhang, L., Cai, B., &amp; <span class="me">Zheng, T.</span> (2023). <span class="title">Developing an innovative technology system for carbon peaking and carbon neutrality.</span> In J. Wang &amp; H. Xu (Eds.), <span class="venue">Introduction to Carbon Dioxide Peaking and Carbon Neutrality</span> (pp. 345–361). China Science and Technology Press. [In Chinese]</li>
+      </ul>
+
+      <h3>Patent</h3>
+      <ul class="pubs">
+        <li>Co-inventor, “Air Quality Prediction System Based on Temporal Gate Mechanism,” Chinese patent ZL 202310185638.6.</li>
+      </ul>
+    </section>
+
+    <section id="experience">
+      <h2>Research experience</h2>
+      <div class="entry">
+        <span class="org">Stanford University · Postdoctoral Researcher</span><span class="when">2025 – present</span>
+        <div class="detail">Earth System Science · Advisor: Rob Jackson
+          <ul>
+            <li>Lead the Ultrafine Particle (UFP) project in the Electrification for Health program, reporting what are, to our knowledge, the first estimates of size-resolved UFP emissions from gas stoves across multiple homes.</li>
+            <li>Year-long UFP emission measurements in 60+ Bay Area homes; derived energy-normalized, size-resolved emission factors for residential gas appliances.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="org">Tsinghua University · Doctoral Researcher</span><span class="when">2021 – 2025</span>
+        <div class="detail">School of Environment · Advisor: Ye Wu
+          <ul>
+            <li>Mapped hyperlocal urban air pollution with machine learning and ~1,500 hours of mobile measurements; led multi-platform street-by-street monitoring.</li>
+            <li>Field campaign lead for an NSFC-funded hyperlocal air pollution campaign in Macau.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="org">Harvard University, Spatial Data Lab · Research Intern</span><span class="when">2025</span>
+        <div class="detail">Advisor: Siqin Wang · Geospatial and machine-learning methods for exposure mapping.</div>
+      </div>
+      <div class="entry">
+        <span class="org">MIT, Senseable City Lab · Visiting Researcher</span><span class="when">2024</span>
+        <div class="detail">Advisors: Carlo Ratti, Simone Mora · Data analyst for the City Scanner project, turning vehicles into sensing platforms.</div>
+      </div>
+      <div class="entry">
+        <span class="org">Imperial College London · Visiting Researcher</span><span class="when">2024</span>
+        <div class="detail">Advisor: Audrey de Nazelle · Cost-effective hyperlocal air pollution mapping and human exposure.</div>
+      </div>
+      <div class="entry">
+        <span class="org">Macau University of Science and Technology · Visiting Researcher</span><span class="when">2024</span>
+        <div class="detail">Advisor: You Yan · Field investigation and data collection for hyperlocal air quality in Macau.</div>
+      </div>
+      <div class="entry">
+        <span class="org">Chinese Academy of Environmental Planning · Research Intern</span><span class="when">2022</span>
+        <div class="detail">Advisor: Bofeng Cai · Innovative technology for carbon peaking and carbon neutrality in China.</div>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="entry">
+        <span class="org">Tsinghua University · Ph.D., Environmental Science and Engineering</span><span class="when">2021 – 2025</span>
+        <div class="detail">Minor in Big Data · Advisor: Ye Wu<br>Dissertation: <em>Fine-Grained Mapping of Air Pollution Using Mobile Monitoring and Machine Learning</em></div>
+      </div>
+      <div class="entry">
+        <span class="org">Shanghai Jiao Tong University · M.Eng., Transportation Engineering</span><span class="when">2021</span>
+        <div class="detail">Advisor: Zhong-Ren Peng<br>Dissertation: <em>Spatiotemporal Distributions of Traffic-related Pollutants in Urban Road Environments</em></div>
+      </div>
+      <div class="entry">
+        <span class="org">Chongqing University · B.Eng., Civil Engineering</span><span class="when">2018</span>
+        <div class="detail">Advisor: Zhitao Yan</div>
+      </div>
+    </section>
+
+    <section id="talks">
+      <h2>Presentations</h2>
+      <ul class="plain">
+        <li>Stanford Global and Planetary Health Research Convening, 12th Annual (2026)</li>
+        <li>International Symposium on Spatiotemporal Data Science (2026)</li>
+        <li>Transportation Research Board, 104th Annual Meeting (2025)</li>
+        <li>7th International Students’ Ecology and Environment Forum (2024) · <em>Second Prize, Oral Presentation</em></li>
+        <li>UK and Ireland Exposure Science Meeting (2024)</li>
+        <li>AGU24 Annual Meeting (2024)</li>
+        <li>Urban Transitions (2024)</li>
+        <li>25th International Transport and Air Pollution Conference (2023)</li>
+        <li>National Environmental Conference for Doctoral Students, Tsinghua University (2022–2023)</li>
+        <li>Transportation Research Board, 99th–102nd Annual Meetings (2020–2023)</li>
+      </ul>
+    </section>
+
+    <section id="awards">
+      <h2>Honors and grants</h2>
+      <ul class="plain">
+        <li>Three-time Tsinghua Comprehensive Scholarship, 2023–2025</li>
+        <li>Tsinghua University Hash Scholarship, 2024</li>
+        <li>Visiting Research Fund, Tsinghua University, 2024</li>
+        <li>Outstanding Team Award (team leader), Big Data Project Practice Course, 2023</li>
+        <li>Top 10 Athlete of the Year, Tsinghua University, 2023</li>
+        <li>Conference travel support, TAP 2023, Gothenburg, Sweden, 2023</li>
+        <li>Outstanding Intern, Chinese Academy of Environmental Planning, 2022</li>
+      </ul>
+    </section>
+
+    <section id="service">
+      <h2>Service and mentoring</h2>
+      <ul class="plain">
+        <li>Guest Editor, <em>Atmosphere</em> Special Issue “Air Pollution Monitoring, Traffic-Related Emissions, and Health Exposure Assessment,” 2026–2027</li>
+        <li>Reviewer for 23 journals, including <em>Atmospheric Environment</em>, <em>Building and Environment</em>, <em>Science of the Total Environment</em>, <em>Journal of Hazardous Materials</em>, <em>Transportation Research Part D</em>, and <em>Scientific Reports</em></li>
+        <li>Mentor, Stanford SURGE Program, Doerr School of Sustainability, 2026</li>
+        <li>Stanford Postdoc Mentoring Certificate, 2026; Preparing Future Teaching Professors Program, 2026</li>
+        <li>Teaching Assistant, Tsinghua University, 2023–2025</li>
+      </ul>
+    </section>
+
+    <section id="running">
+      <h2>Running</h2>
+      <p>I race distances from 800 m to the marathon and coach runners in Palo Alto. I was Vice-Captain of the Tsinghua University Running Team.</p>
+      <div class="photos">
+        <figure><img src="running-sf-marathon.jpg" alt="Tie Zheng racing the 2026 San Francisco Marathon" loading="lazy"><figcaption>San Francisco Marathon, 2026</figcaption></figure>
+        <figure><img src="running-track.jpg" alt="Tie Zheng on the track in a Tsinghua University singlet" loading="lazy"><figcaption>On the track in Tsinghua colors</figcaption></figure>
+      </div>
+      <ul class="pb" aria-label="Personal bests">
+        <li><strong>30:14</strong><span>10K</span></li>
+        <li><strong>1:08:37</strong><span>Half marathon</span></li>
+        <li><strong>2:27:01</strong><span>Marathon</span></li>
+      </ul>
+      <ul class="plain">
+        <li>6th overall, San Francisco Marathon, 2026</li>
+        <li>5th, San Jose Half Marathon, 2026</li>
+        <li>1st overall, Victoria Park Half Marathon, London, 2024</li>
+        <li>1st (meet record), Men’s 5,000 m, London University Outdoor Championships, 2024</li>
+        <li>1st (meet record), Men’s 10,000 m, Beijing Collegiate Track and Field Championships, 2022 &amp; 2024</li>
+        <li>1st (meet record), Huai Rou Great Wall Marathon, 2023</li>
+      </ul>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div>© 2026 Tie Zheng · Last updated October 2026</div>
+</footer>
+
+</body>
+</html>
