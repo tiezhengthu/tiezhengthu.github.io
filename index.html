@@ -124,6 +124,14 @@
   .photos img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 8px; display: block; }
   .photos figcaption { font-size: .82rem; color: var(--muted); margin-top: 4px; }
 
+  .races { list-style: none; padding: 0; margin: 0; }
+  .races li { display: grid; grid-template-columns: 92px 1fr; gap: 12px; padding: 6px 0; border-bottom: 1px solid var(--border); }
+  .races li:last-child { border-bottom: 0; }
+  .races time { color: var(--muted); font-size: .92rem; font-variant-numeric: tabular-nums; }
+  .races .race { display: block; color: var(--heading); }
+  .races .result { display: block; font-size: .92rem; font-variant-numeric: tabular-nums; }
+  @media (max-width: 860px) { .races li { grid-template-columns: 1fr; gap: 0; } }
+
   footer { border-top: 1px solid var(--border); color: var(--muted); font-size: .85rem; }
   footer div { max-width: 1180px; margin: 0 auto; padding: 18px 24px; }
 
@@ -199,7 +207,8 @@
       <h2>News</h2>
       <ul class="news">
         <li><time>2026</time><span>Serving as Guest Editor for the <em>Atmosphere</em> Special Issue “Air Pollution Monitoring, Traffic-Related Emissions, and Health Exposure Assessment” (submissions open through March 2027).</span></li>
-        <li><time>2026</time><span>Placed 6th overall at the San Francisco Marathon.</span></li>
+        <li><time>Oct 2026</time><span>Placed 5th overall (of 4,650) at the Rock ’n’ Roll San Jose Half Marathon in 1:08:41.</span></li>
+        <li><time>Jul 2026</time><span>Placed 6th overall (of 7,287) at the San Francisco Marathon.</span></li>
         <li><time>2026</time><span>Mentoring a student in the Stanford SURGE Program on mapping air-health inequity with AI and community-based sensing.</span></li>
         <li><time>Aug 2025</time><span>Joined Stanford University as a Postdoctoral Researcher with Prof. Rob Jackson.</span></li>
         <li><time>Jun 2025</time><span>Received my Ph.D. from Tsinghua University.</span></li>
@@ -354,13 +363,16 @@
         <li><strong>1:08:37</strong><span>Half marathon</span></li>
         <li><strong>2:27:01</strong><span>Marathon</span></li>
       </ul>
-      <ul class="plain">
-        <li>6th overall, San Francisco Marathon, 2026</li>
-        <li>5th, San Jose Half Marathon, 2026</li>
-        <li>1st overall, Victoria Park Half Marathon, London, 2024</li>
-        <li>1st (meet record), Men’s 5,000 m, London University Outdoor Championships, 2024</li>
-        <li>1st (meet record), Men’s 10,000 m, Beijing Collegiate Track and Field Championships, 2022 &amp; 2024</li>
-        <li>1st (meet record), Huai Rou Great Wall Marathon, 2023</li>
+      <h3>Selected results</h3>
+      <ul class="races">
+        <li><time>Oct 2026</time><span><span class="race">Rock ’n’ Roll San Jose Half Marathon</span><span class="result"><strong>5th overall</strong> (5 / 4,650) · 1:08:41 · <a href="https://sportstats.one/event/rock-n-roll-san-jose/leaderboard/147868">Results</a></span></span></li>
+        <li><time>Jul 2026</time><span><span class="race">San Francisco Marathon</span><span class="result"><strong>6th overall</strong> (6 / 7,287) · 2:35:06 · <a href="https://live.chronotrack.com/event/91608/results?raceId=242840&amp;divisionId=2724583">Results</a></span></span></li>
+        <li><time>May 2026</time><span><span class="race">San Jose Half Marathon</span><span class="result"><strong>5th overall</strong> (5 / 2,340) · 1:08:37 (PB) · <a href="https://results.raceroster.com/v3/events/whe6mbypy4aw2wjp/race/288217">Results</a></span></span></li>
+        <li><time>2025</time><span><span class="race">Rock ’n’ Roll San Jose 10K</span><span class="result"><strong>3rd</strong> · 32:56 · <a href="https://www.runrocknroll.com/events/san-jose/results">Results</a></span></span></li>
+        <li><time>2024</time><span><span class="race">Victoria Park Half Marathon, London</span><span class="result"><strong>1st overall</strong></span></span></li>
+        <li><time>2024</time><span><span class="race">Men’s 5,000 m, London University Outdoor Championships</span><span class="result"><strong>1st</strong> (meet record)</span></span></li>
+        <li><time>2022, 2024</time><span><span class="race">Men’s 10,000 m, Beijing Collegiate Track and Field Championships</span><span class="result"><strong>1st</strong> (meet record)</span></span></li>
+        <li><time>2023</time><span><span class="race">Huai Rou Great Wall Marathon</span><span class="result"><strong>1st</strong> (meet record)</span></span></li>
       </ul>
     </section>
 
