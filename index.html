@@ -412,5 +412,29 @@
   <div>© 2026 Tie Zheng · Last updated October 2026</div>
 </footer>
 
+<!-- Visit and link-click statistics (GoatCounter: no cookies, no IP storage). Dashboard: https://tiezheng.goatcounter.com -->
+<script data-goatcounter="https://tiezheng.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script>
+  // Record every link click as an event named "Section › Link › Item", e.g. "Publications › DOI › Cost-effective mapping…"
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a || !window.goatcounter || !window.goatcounter.count) return;
+    var clean = function (t, n) { t = (t || '').replace(/\s+/g, ' ').trim(); return t.length > n ? t.slice(0, n - 1) + '…' : t; };
+    var section = a.closest('.sidebar') ? 'Sidebar'
+      : a.closest('.masthead') ? 'Top menu'
+      : a.closest('footer') ? 'Footer'
+      : clean((a.closest('section') || {}).querySelector ? a.closest('section').querySelector('h2').textContent : 'Page', 40);
+    var li = a.closest('li, .entry');
+    var item = '';
+    if (li) {
+      var t = li.querySelector('.title, .race, .org');
+      item = t ? t.textContent : (li.querySelector('time') ? li.textContent.replace(li.querySelector('time').textContent, '') : '');
+    }
+    var linkText = clean(a.textContent, 50);
+    item = clean(item, 70);
+    var name = [section, linkText, item && item !== linkText ? item : ''].filter(Boolean).join(' › ');
+    window.goatcounter.count({ path: name, title: a.href, event: true });
+  });
+</script>
 </body>
 </html>
