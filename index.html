@@ -409,7 +409,7 @@
 </div>
 
 <footer>
-  <div>© 2026 Tie Zheng · Last updated October 2026</div>
+  <div>© 2026 Tie Zheng · Last updated October 2026<span id="visit-count" hidden></span></div>
 </footer>
 
 <!-- Visit and link-click statistics (GoatCounter: no cookies, no IP storage). Dashboard: https://tiezheng.goatcounter.com -->
@@ -435,6 +435,17 @@
     var name = [section, linkText, item && item !== linkText ? item : ''].filter(Boolean).join(' › ');
     window.goatcounter.count({ path: name, title: a.href, event: true });
   });
+
+  // Show the total visit count in the footer (stays hidden if the counter can't be loaded)
+  fetch('https://tiezheng.goatcounter.com/counter/TOTAL.json')
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) {
+      if (!d || !d.count) return;
+      var el = document.getElementById('visit-count');
+      el.textContent = ' · ' + d.count + ' visits';
+      el.hidden = false;
+    })
+    .catch(function () {});
 </script>
 </body>
 </html>
